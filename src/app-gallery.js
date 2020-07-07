@@ -17,12 +17,12 @@ class AppGallery extends PolymerElement {
     return html`
       <style include="shared-styles">
         :host {
-          // display: block;
-          // padding: 10px;
+          display: block;
+          padding: 10px;
         }
         .image-tiles{
-          display:flex;
-          flex-direction:row;
+          // display:flex;
+          // flex-direction:row;
         }
       </style>
 
