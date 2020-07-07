@@ -10,30 +10,52 @@
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
+import './components/image-tile.js';
 
 class AppGallery extends PolymerElement {
   static get template() {
     return html`
       <style include="shared-styles">
         :host {
-          display: block;
-
-          padding: 10px;
+          // display: block;
+          // padding: 10px;
+        }
+        .image-tiles{
+          display:flex;
+          flex-direction:row;
         }
       </style>
 
       <div class="card">
-        <div class="circle">2</div>
         <h1>Gallery</h1>
-        <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
-        <p>
-          Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto
-          suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio
-          natum malorum, tibique copiosae expetenda mel ea.
-        </p>
+        <div class="image-tiles">
+          <dom-repeat items={{images}}
+                      as="src">
+            <template>
+              <image-tile source={{src}}></image-tile>
+            </template>
+          </dom-repeat>
+        </div>
       </div>
     `;
   }
+
+  static get properties() {
+    return{
+      images: {
+        type: Array,
+        value: () => {
+          return [
+            '../images/001.png',
+            '../images/002.png',
+            '../images/003.png',
+            '../images/004.png',
+          ]
+        }
+      }
+    }
+  }
+
 }
 
 window.customElements.define('app-gallery', AppGallery);
